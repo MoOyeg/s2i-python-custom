@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "Custom assembly"
+#wget https://downloads.python.org/pypy/pypy3.7-v7.3.5-linux64.tar.bz2
+#tar -xvf pypy3.7-v7.3.5-linux64.tar.bz2
+#mv pypy3.7-v7.3.5-linux64 $HOME/.local/bin
+alias python3.8=/usr/local/bin/pypy3.7-v7.3.5-linux64
+
+/usr/libexec/s2i/assemble-main
+rc=$?
+
+if [ $rc -eq 0 ]; then
+    echo "After successful assembling"
+else
+    echo "After failed assembling"
+fi
+
+exit $rc
