@@ -1,0 +1,1 @@
+alias python3.8="${APP_ROOT}/bin/pypy3"

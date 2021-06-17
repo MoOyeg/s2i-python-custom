@@ -4,7 +4,9 @@ echo "Custom assembly"
 #wget https://downloads.python.org/pypy/pypy3.7-v7.3.5-linux64.tar.bz2
 #tar -xvf pypy3.7-v7.3.5-linux64.tar.bz2
 #mv pypy3.7-v7.3.5-linux64 $HOME/.local/bin
-alias python3.8=/usr/local/bin/pypy3.7-v7.3.5-linux64
+echo "Confirming Python Type"
+python_version=$(python3.8 --version)
+echo "Python Version is $python_version"
 
 /usr/libexec/s2i/assemble-main
 rc=$?

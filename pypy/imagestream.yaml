@@ -1,0 +1,19 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: pypy-3.7
+  namespace: openshift
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: 'image-registry.openshift-image-registry.svc:5000/openshift/pypy-3.7'
+  tags:
+    - tag: latest
+      items:
+        - created: '2021-06-17T03:33:07Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/openshift/pypy-3.7@sha256:2d292e81e63dc459dfb94578646ddc8c35a86037a425ba0cc30e2569a041b520
+          image: >-
+            sha256:2d292e81e63dc459dfb94578646ddc8c35a86037a425ba0cc30e2569a041b520
+          generation: 1
