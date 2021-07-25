@@ -95,10 +95,13 @@ if is_gunicorn_installed; then
     APP_MODULE="$(python "$setup_py" --name)"
   fi
 
-  if [[ "$APP_MODULE" ]]; then
+if [[ "$APP_MODULE" ]]; then
     export WEB_CONCURRENCY=${WEB_CONCURRENCY:-$(get_default_web_concurrency)}
     
-    if is_uvicorn_installed; then
+    if [[ is_uvicorn_installed && ! $CUSTOM_WORKER ]]; then
+    #If Custom Worker is enabled you should pass your own custom guniorn worker
+    #via the guniorn config file
+    #See Example here:https://github.com/MoOyeg/testFlask/blob/quart/gunicorn-uvi.conf
     echo "---> Serving application with gunicorn and uvicorn ($APP_MODULE) ..."
     exec gunicorn "$APP_MODULE" -k uvicorn.workers.UvicornWorker --bind=0.0.0.0:8080 --access-logfile=- --config "$APP_CONFIG"
     else

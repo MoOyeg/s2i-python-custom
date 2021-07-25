@@ -1,0 +1,31 @@
+#Patch can be wiped by samples operator
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/display-name: Python
+  name: python
+  namespace: openshift
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: 3.7-pypy-ubi8
+      annotations:
+        description: >-
+          Build and run PyPy 3.7 applications on UBI 8. For more information
+          about using this builder image, including OpenShift considerations,
+          see
+          https://github.com/sclorg/s2i-python-container/blob/master/3.8/README.md.
+        iconClass: icon-python
+        openshift.io/display-name: PyPy 3.7 (UBI 8)
+        openshift.io/provider-display-name: "Moyo"
+        sampleRepo: "https://github.com/MoOyeg/testFlask"
+        supports: "pypy,python:3.7,python"
+        tags: "builder,python,pypy"
+        version: "3.7"
+      from:
+        kind: DockerImage
+        name: "image-registry.openshift-image-registry.svc:5000/openshift/s2i-ubi8-pypy:latest"
+      referencePolicy:
+        type: Local
