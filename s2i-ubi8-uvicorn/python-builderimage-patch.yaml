@@ -1,5 +1,5 @@
 #Patch can be wiped by samples operator
-# Builder Image Build command - oc new-build https://github.com/MoOyeg/s2i-python-custom.git --name=s2i-ubi7-pypy --context-dir=s2i-ubi7-pypy -n openshift
+# Builder Image Build command - oc new-build https://github.com/MoOyeg/s2i-python-custom.git --name=s2i-ubi8-uvicorn --context-dir=s2i-ubi8-uvicorn -n openshift
 kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
@@ -11,22 +11,22 @@ spec:
   lookupPolicy:
     local: false
   tags:
-    - name: 3.7-pypy-ubi7
+    - name: 3.8-python-uvicorn
       annotations:
         description: >-
-          Build and run PyPy 3.7 applications on UBI 7. For more information
+          Build and run Python applications on UBI 8 with Gunicorn and uvicorn which can be used for ASGI Applications. For more information
           about using this builder image, including OpenShift considerations,
           see
           https://github.com/sclorg/s2i-python-container/blob/master/3.8/README.md.
         iconClass: icon-python
-        openshift.io/display-name: PyPy 3.7 (UBI 7)
+        openshift.io/display-name: Python 3.8 Uvicorn (UBI 8)
         openshift.io/provider-display-name: "Moyo"
         sampleRepo: "https://github.com/MoOyeg/testFlask"
-        supports: "pypy,python:3.7,python"
+        supports: "pypy,python:3.7,python,uvicorn,gunicorn"
         tags: "builder,python,pypy"
-        version: "3.7"
+        version: "3.8"
       from:
         kind: DockerImage
-        name: "image-registry.openshift-image-registry.svc:5000/openshift/s2i-ubi7-pypy:latest"
+        name: "image-registry.openshift-image-registry.svc:5000/openshift/s2i-ubi8-uvicorn:latest"
       referencePolicy:
         type: Local

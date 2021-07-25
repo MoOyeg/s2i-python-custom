@@ -1,4 +1,5 @@
 #Patch can be wiped by samples operator
+# Builder Image Build command - oc new-build https://github.com/MoOyeg/s2i-python-custom.git --name=s2i-ubi8-pypy --context-dir=s2i-ubi8-pypy -n openshift
 kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
