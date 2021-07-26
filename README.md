@@ -8,7 +8,7 @@
 
 ## How to Build Images
 
-### Sample - Build Image for a testFlask Application in namespace apptest
+### Sample - Build Image for the [testFlask Application](https://github.com/MoOyeg/testFlask) in namespace apptest
 
 - ``` oc new-project apptest```
 
