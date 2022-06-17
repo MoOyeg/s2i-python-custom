@@ -14,9 +14,11 @@
 
 - ```oc new-build https://github.com/MoOyeg/s2i-python-custom.git --name=s2i-ubi8-pypy --context-dir=s2i-ubi8-pypy -n apptest```
   
-- ```oc new-app s2i-ubi8-pypy~https://github.com/MoOyeg/testFlask.git --name=testflask -l app=testflask \```
-  ```--strategy=source --env=APP_CONFIG=gunicorn.conf.py --env=APP_MODULE=testapp:app \```
-` ```-n apptest```
+- ``` bash
+  oc new-app s2i-ubi8-pypy~https://github.com/MoOyeg/testFlask.git --name=testflask -l app=testflask \
+  --strategy=source --env=APP_CONFIG=gunicorn.conf.py --env=APP_MODULE=testapp:app \
+  -n apptest
+  ```
 
 ### Sample - Create ImageStream and add it to the Openshift Image Catalog
 
